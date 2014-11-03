@@ -34,11 +34,15 @@ from checkio.referees import checkers
 
 from tests import TESTS
 
+
+def checker(result, test_data):
+    return result
+
 api.add_listener(
     ON_CONNECT,
     CheckiORefereeCode(
         tests=TESTS,
-        # checker=None,  # checkers.float.comparison(2)
+        check_result=checker,
         # add_allowed_modules=[],
         # add_close_builtins=[],
         # remove_allowed_modules=[]
