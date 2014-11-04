@@ -22,7 +22,7 @@ def prepare_test(middle_code, test_code, show_code, show_answer):
 
 TESTS = {
     "1. Init": [
-        prepare_test('Friends(({"a", "b"}, {"b", "c"}, {"c", "a"}, {"a", "c"})\n',
+        prepare_test('Friends(({"a", "b"}, {"b", "c"}, {"c", "a"}, {"a", "c"}))\n',
                      PASS_CODE, None, None),
         prepare_test('Friends([{"1", "2"}, {"3", "1"}])\n', PASS_CODE, None, None),
     ],
