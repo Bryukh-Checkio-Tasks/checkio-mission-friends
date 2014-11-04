@@ -81,7 +81,8 @@ TESTS = {
             'n = f.names()',
             'RET["code_result"] = n == {"nikola", "sophia", "robot", "pilot", "stephen"}, n',
             'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
-            'f.names()')
+            'f.names()',
+            '{"nikola", "sophia", "robot", "pilot", "stephen"}')
     ]
 
 
