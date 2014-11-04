@@ -38,9 +38,35 @@ TESTS = {
                      'add_result = f.add({"It", "Am"})\n',
                      "RET['code_result'] = add_result is True, add_result",
                      'f = Friends([{"And", "Or"}, {"For", "And"}])\n'
-                     'add_result = f.add({"It", "Am"})\n',
-                     "True"
-        ),
+                     'f.add({"It", "Am"})\n',
+                     "True"),
+        prepare_test('f = Friends([{"And", "Or"}, {"For", "And"}])\n'
+                     'add_result = f.add({"Or", "And"})\n',
+                     "RET['code_result'] = add_result is False, add_result",
+                     'f = Friends([{"And", "Or"}, {"For", "And"}])\n'
+                     'f.add({"Or", "And"})\n',
+                     "True")
+    ],
+    "3. Remove": [
+        prepare_test('f = Friends([{"1", "2"}, {"3", "1"}])\n'
+                     'remove_result = f.remove({"2", "4"})\n',
+                     "RET['code_result'] = remove_result is False, remove_result",
+                     'f = Friends([{"1", "2"}, {"3", "1"}])\n'
+                     'f.remove({"2", "4"})',
+                     "False"),
+        prepare_test('f = Friends([{"1", "2"}, {"3", "1"}])\n'
+                     'remove_result = f.remove({"11", "12"})\n',
+                     "RET['code_result'] = remove_result is False, remove_result",
+                     'f = Friends([{"1", "2"}, {"3", "1"}])\n'
+                     'f.remove({"11", "12"})',
+                     "False"),
+
+        prepare_test('f = Friends([{"And", "Or"}, {"For", "And"}])\n'
+                     'remove_result = f.remove({"And", "Or"})\n',
+                     "RET['code_result'] = remove_result is True, add_result",
+                     'f = Friends([{"And", "Or"}, {"For", "And"}])\n'
+                     'f.remove({"And", "Or"})\n',
+                     "True"),
         prepare_test('f = Friends([{"And", "Or"}, {"For", "And"}])\n'
                      'add_result = f.add({"Or", "And"})\n',
                      "RET['code_result'] = add_result is False, add_result",
@@ -48,7 +74,17 @@ TESTS = {
                      'add_result = f.add({"Or", "And"})\n',
                      "True"
         )
+    ],
+    "4. Names": [
+        prepare_test(
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
+            'n = f.names()',
+            'RET["code_result"] = n == {"nikola", "sophia", "robot", "pilot", "stephen"}, n',
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
+            'f.names()')
     ]
+
+
 
 
     #     prepare_test(test="str(Building(1, 1, 2, 2))",
