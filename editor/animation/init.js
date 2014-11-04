@@ -42,7 +42,7 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210', 'snap.svg_030'],
             //YOUR FUNCTION NAME
             var fname = 'checkio';
 
-            var checkioInput = data.in || "Building(1, 1, 1, 1)";
+            var checkioInput = data.in || 'Friends(({"1", "2"}))';
 
             var failError = function (dError) {
                 $content.find('.call').html(checkioInput);
@@ -70,9 +70,9 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210', 'snap.svg_030'],
 
 
             if (data.ext) {
-                var rightResult = data.ext["answer"];
-                var userResult = data.out["code_result"];
-                var result = data.ext["result"];
+                var rightResult = data.ext["show_answer"];
+                var userResult = data.out["code_result"][1];
+                var result = data.ext["code_result"][0];
                 var result_addon = data.ext["result_addon"];
 
                 //if you need additional info from tests (if exists)
