@@ -65,7 +65,7 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210', 'snap.svg_030'],
                 return false;
             }
 
-            $content.find('.call').html(checkioInput);
+            $content.find('.call pre').text(checkioInput);
             $content.find('.output').html('Working...');
 
 
@@ -77,9 +77,9 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210', 'snap.svg_030'],
 
                 //if you need additional info from tests (if exists)
                 var explanation = data.ext["explanation"];
-                $content.find('.output').html('&nbsp;Your result:<br>' + JSON.stringify(userResult));
+                $content.find('.output').html('&nbsp;Your result:<br>' + userResult);
                 if (!result) {
-                    $content.find('.answer').html('Right result:<br>' + JSON.stringify(rightResult));
+                    $content.find('.answer').html('Right result:<br>' + rightResult);
                     $content.find('.answer').addClass('error');
                     $content.find('.output').addClass('error');
                     $content.find('.call').addClass('error');
@@ -102,7 +102,7 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210', 'snap.svg_030'],
             //
 
 
-            this_e.setAnimationHeight($content.height() + 60);
+            this_e.setAnimationHeight($content.height() + 100);
 
         });
 

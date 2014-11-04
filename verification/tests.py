@@ -29,20 +29,20 @@ TESTS = {
     "2. Add": [
         prepare_test('f = Friends([{"1", "2"}, {"3", "1"}])\n'
                      'add_result = f.add({"2", "4"})\n',
-                     "RET['code_result'] = add_result is True, add_result",
+                     "RET['code_result'] = add_result is True, str(add_result)",
                      'f = Friends([{"1", "2"}, {"3", "1"}])\n'
                      'f.add({"2", "4"})',
                      "True"
         ),
         prepare_test('f = Friends([{"And", "Or"}, {"For", "And"}])\n'
                      'add_result = f.add({"It", "Am"})\n',
-                     "RET['code_result'] = add_result is True, add_result",
+                     "RET['code_result'] = add_result is True, str(add_result)",
                      'f = Friends([{"And", "Or"}, {"For", "And"}])\n'
                      'f.add({"It", "Am"})\n',
                      "True"),
         prepare_test('f = Friends([{"And", "Or"}, {"For", "And"}])\n'
                      'add_result = f.add({"Or", "And"})\n',
-                     "RET['code_result'] = add_result is False, add_result",
+                     "RET['code_result'] = add_result is False, str(add_result)",
                      'f = Friends([{"And", "Or"}, {"For", "And"}])\n'
                      'f.add({"Or", "And"})\n',
                      "True")
@@ -50,39 +50,78 @@ TESTS = {
     "3. Remove": [
         prepare_test('f = Friends([{"1", "2"}, {"3", "1"}])\n'
                      'remove_result = f.remove({"2", "4"})\n',
-                     "RET['code_result'] = remove_result is False, remove_result",
+                     "RET['code_result'] = remove_result is False, str(remove_result)",
                      'f = Friends([{"1", "2"}, {"3", "1"}])\n'
                      'f.remove({"2", "4"})',
                      "False"),
         prepare_test('f = Friends([{"1", "2"}, {"3", "1"}])\n'
                      'remove_result = f.remove({"11", "12"})\n',
-                     "RET['code_result'] = remove_result is False, remove_result",
+                     "RET['code_result'] = remove_result is False, str(remove_result)",
                      'f = Friends([{"1", "2"}, {"3", "1"}])\n'
                      'f.remove({"11", "12"})',
                      "False"),
 
         prepare_test('f = Friends([{"And", "Or"}, {"For", "And"}])\n'
                      'remove_result = f.remove({"And", "Or"})\n',
-                     "RET['code_result'] = remove_result is True, add_result",
+                     "RET['code_result'] = remove_result is True, str(remove_result)",
                      'f = Friends([{"And", "Or"}, {"For", "And"}])\n'
                      'f.remove({"And", "Or"})\n',
                      "True"),
-        prepare_test('f = Friends([{"And", "Or"}, {"For", "And"}])\n'
-                     'add_result = f.add({"Or", "And"})\n',
-                     "RET['code_result'] = add_result is False, add_result",
-                     'f = Friends([{"And", "Or"}, {"For", "And"}])\n'
-                     'add_result = f.add({"Or", "And"})\n',
-                     "True"
-        )
     ],
     "4. Names": [
         prepare_test(
-            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
-            'n = f.names()',
-            'RET["code_result"] = n == {"nikola", "sophia", "robot", "pilot", "stephen"}, n',
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
+            'n = f.names()\n',
+            'RET["code_result"] = (n == {"nikola", "sophia", "robot", "pilot", "stephen"}, str(n))',
             'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
             'f.names()',
-            '{"nikola", "sophia", "robot", "pilot", "stephen"}')
+            '{"nikola", "sophia", "robot", "pilot", "stephen"}'),
+        prepare_test(
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
+            'f.remove({"stephen", "robot"})\n'
+            'n = f.names()\n',
+            'RET["code_result"] = (n == {"nikola", "sophia", "pilot"}, str(n))',
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
+            'f.remove({"stephen", "robot"})\n'
+            'f.names()',
+            '{"nikola", "sophia", "pilot"}'),
+
+    ],
+    "5. Connected": [
+        prepare_test(
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
+            'n = f.connected("nikola")\n',
+            'RET["code_result"] = (n == {"sophia"}, str(n))',
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
+            'f.connected("nikola")',
+            '{"sophia"}'),
+        prepare_test(
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
+            'n = f.connected("sophia")\n',
+            'RET["code_result"] = (n == {"nikola", "pilot"}, str(n))',
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
+            'f.connected("sophia")',
+            '{"nikola", "pilot"}'),
+        prepare_test(
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
+            'n = f.connected("DDD")\n',
+            'RET["code_result"] = (n == set(), str(n))',
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
+            'f.connected("DDD")',
+            'set()'),
+        prepare_test(
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
+            'f.add({"sophia", "stephen"})\n'
+            'f.remove({"sophia", "nikola"})\n'
+            'n = f.connected("sophia")\n',
+            'RET["code_result"] = (n == {"stephen", "pilot"}, str(n))',
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
+            'f.add({"sophia", "stephen"})\n'
+            'f.remove({"sophia", "nikola"})\n'
+            'f.connected("sophia")\n',
+            '{"stephen", "pilot"}'),
+
+
     ]
 
 

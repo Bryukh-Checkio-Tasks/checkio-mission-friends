@@ -27,7 +27,7 @@
 .center-exp {
     margin-left:auto;
     margin-right:auto;
-    display:table;
+    /*display:table;*/
 }
 
 /* Animation */
@@ -56,6 +56,18 @@
 .animation-content .error{
     color: #de0202;
     border-color: #de0202;
+}
+
+.animation-content .call {
+    white-space: normal;
+    word-break: normal;
+    overflow-x: auto;
+    font-size: 12px;
+    /*display: block;*/
+}
+
+.animation-content .call pre {
+    text-align: left;
 }
 
 .tryit-content {
