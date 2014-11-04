@@ -70,7 +70,7 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210', 'snap.svg_030'],
 
 
             if (data.ext) {
-                var rightResult = data.ext["show_answer"];
+                var rightResult = data.ext["answer"];
                 var userResult = data.out["code_result"][1];
                 var result = data.ext["code_result"][0];
                 var result_addon = data.ext["result_addon"];

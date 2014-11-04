@@ -36,7 +36,7 @@ from tests import TESTS
 
 
 def checker(result, test_data):
-    return result
+    return result['code_result']
 
 api.add_listener(
     ON_CONNECT,
