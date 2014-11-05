@@ -16,15 +16,16 @@
 <p>
     For the mission
     <a href="http://www.checkio.org/mission/find-friends/share/3061fec1b35588e4bae8ad69db073aab/">
-    "How to find friends"
-    </a> is nice to have a special data structure.
-    In this mission we will realize a data structure to store and work with friend network.
+        "How to find friends"
+    </a>, it’s nice to have access to a specially made data structure. In this mission we will
+    realize a data structure which we will use to store and work with a friend network.
+
 </p>
 
 <p>
-    Our class "Friends" should contains names and connections between them.
-    Names are represented by strings and case sensitive.
-    Connections are undirected, so if "sophia" is connected with "nikola", then it's correct versus.
+    The class "Friends" should contains names and the connections between them. Names are
+    represented as strings and are case sensitive. Connections are undirected, so if "sophia" is
+    connected with "nikola", then it's also correct in reverse.
 
 </p>
 
@@ -32,10 +33,9 @@
     <em>class</em> <strong>Friends</strong><em>(connections)</em>
 </p>
 <p class="indent">
-    Returns a new Friends instance. <em>connections</em> is iterable of
-    sets with two elements in each. Each connection contains two names as strings.
-    Connections can be repeated in the initial data, but it doesn't affect twice.
-    Each connections has only two states - exist or not.
+    Returns a new Friends instance. <em>"connections"</em> is an iterable of sets with two elements
+    in each. Each connection contains two names as strings. Connections can be repeated in the
+    initial data, but it doesn’t occur twice. Each connection has only two states - existing or not.
 
 </p>
 
@@ -49,7 +49,7 @@
     <strong>add</strong>(connection)
 </p>
 <p class="indent">
-    Add a connection in the instance. <em>connection</em>
+    Add a connection in the instance. <em>"connection"</em>
     is a set of two names (strings).
     Returns True if this connection is new.
     Returns False if this connection exists already.
@@ -67,7 +67,7 @@ True
     <strong>remove</strong>(connection)
 </p>
 <p class="indent">
-    Remove a connection from the instance. <em>connection</em>
+    Remove a connection from the instance. <em>"connection"</em>
     is a set of two names (strings).
     Returns True if this connection is exist.
     Returns False if this connection is not in the instance.
@@ -100,7 +100,7 @@ True
     <strong>connected</strong>(name)
 </p>
 <p class="indent">
-    Returns a set of names which is connected with the given <em>name</em>.
+    Returns a set of names which is connected with the given <em>"name"</em>.
     If "name" is not exists in the instance, then return an empty set.
 </p>
 <pre class="example">
@@ -130,8 +130,9 @@ set()
 
 <p class="for_info_only">
     <strong>How it is used: </strong>
-    Here you will implement a class with mutable states. So this is not a simple structure
-    with couple functions, but object representation with more complex structure.
+    Here you will implement a class with mutable states. This is not a simple structure with a
+    couple of functions, but object representation with more complex structure.
+
 </p>
 
 <p>
