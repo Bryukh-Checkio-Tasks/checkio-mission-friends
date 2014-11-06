@@ -1,4 +1,4 @@
-class Friends(object):
+class Friends:
     def __init__(self, connections):
         raise NotImplementedError
 
