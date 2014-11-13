@@ -112,6 +112,10 @@ set()
 >>> f.remove({"c", "a"})
 True
 >>> f.connected("c")
+{"b"}
+>>> f.remove({"c", "b"})
+True
+>>> f.connected("c")
 set()
 </pre>
 <br>
