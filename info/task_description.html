@@ -40,7 +40,7 @@
 </p>
 
 <pre class="example">
->>> Friends(({"a", "b"}, {"b", "c"}, {"c", "a"}, {"a", "c"})
+>>> Friends(({"a", "b"}, {"b", "c"}, {"c", "a"}, {"a", "c"}))
 >>> Friends([{"1", "2"}, {"3", "1"}])
 </pre>
 <br>
@@ -87,7 +87,7 @@ False
     Returns a set of names. The set contains only names which is connected with somebody.
 </p>
 <pre class="example">
->>> f = Friends(({"a", "b"}, {"b", "c"}, {"c", "d"})
+>>> f = Friends(({"a", "b"}, {"b", "c"}, {"c", "d"}))
 >>> f.names()
 {"a", "b", "c", "d"}
 >>> f.remove({"d", "c"})
@@ -104,7 +104,7 @@ True
     If "name" is not exists in the instance, then return an empty set.
 </p>
 <pre class="example">
->>> f = Friends(({"a", "b"}, {"b", "c"}, {"c", "a"})
+>>> f = Friends(({"a", "b"}, {"b", "c"}, {"c", "a"}))
 >>> f.connected("a")
 {"b", "c"}
 >>> f.connected("d")
