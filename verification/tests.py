@@ -92,21 +92,21 @@ TESTS = {
             'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
             'n = f.connected("nikola")\n',
             'RET["code_result"] = (n == {"sophia"}, str(n))',
-            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
             'f.connected("nikola")',
             '{"sophia"}'),
         prepare_test(
             'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
             'n = f.connected("sophia")\n',
             'RET["code_result"] = (n == {"nikola", "pilot"}, str(n))',
-            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
             'f.connected("sophia")',
             '{"nikola", "pilot"}'),
         prepare_test(
             'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
             'n = f.connected("DDD")\n',
             'RET["code_result"] = (n == set(), str(n))',
-            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
             'f.connected("DDD")',
             'set()'),
         prepare_test(
