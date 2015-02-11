@@ -35,7 +35,7 @@
 <p class="indent">
     Returns a new Friends instance. <em>"connections"</em> is an iterable of sets with two elements
     in each. Each connection contains two names as strings. Connections can be repeated in the
-    initial data, but inside it store once. Each connection has only two states - existing or not.
+    initial data, but inside it stored once. Each connection has only two states - existing or not.
 
 </p>
 
@@ -69,7 +69,7 @@ True
 <p class="indent">
     Remove a connection from the instance. <em>"connection"</em>
     is a set of two names (strings).
-    Returns True if this connection is exist.
+    Returns True if this connection exists.
     Returns False if this connection is not in the instance.
 </p>
 <pre class="example">
@@ -84,7 +84,7 @@ False
     <strong>names</strong>()
 </p>
 <p class="indent">
-    Returns a set of names. The set contains only names which is connected with somebody.
+    Returns a set of names. The set contains only names which are connected with somebody.
 </p>
 <pre class="example">
 >>> f = Friends(({"a", "b"}, {"b", "c"}, {"c", "d"}))
@@ -101,7 +101,7 @@ True
 </p>
 <p class="indent">
     Returns a set of names which is connected with the given <em>"name"</em>.
-    If "name" is not exists in the instance, then return an empty set.
+    If "name" is not exist in the instance, then return an empty set.
 </p>
 <pre class="example">
 >>> f = Friends(({"a", "b"}, {"b", "c"}, {"c", "a"}))
@@ -141,5 +141,5 @@ set()
 
 <p>
     <strong>Precondition:</strong>
-    All data are correct.
+    All data is correct.
 </p>
