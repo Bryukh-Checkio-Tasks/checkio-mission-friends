@@ -45,7 +45,7 @@ TESTS = {
                      "RET['code_result'] = add_result is False, str(add_result)",
                      'f = Friends([{"And", "Or"}, {"For", "And"}])\n'
                      'f.add({"Or", "And"})\n',
-                     "True")
+                     "False")
     ],
     "3. Remove": [
         prepare_test('f = Friends([{"1", "2"}, {"3", "1"}])\n'
