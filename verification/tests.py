@@ -73,7 +73,7 @@ TESTS = {
             'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
             'n = f.names()\n',
             'RET["code_result"] = (n == {"nikola", "sophia", "robot", "pilot", "stephen"}, str(n))',
-            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
             'f.names()',
             '{"nikola", "sophia", "robot", "pilot", "stephen"}'),
         prepare_test(
@@ -81,7 +81,7 @@ TESTS = {
             'f.remove({"stephen", "robot"})\n'
             'n = f.names()\n',
             'RET["code_result"] = (n == {"nikola", "sophia", "pilot"}, str(n))',
-            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot}))\n'
+            'f = Friends(({"nikola", "sophia"}, {"stephen", "robot"}, {"sophia", "pilot"}))\n'
             'f.remove({"stephen", "robot"})\n'
             'f.names()',
             '{"nikola", "sophia", "pilot"}'),
