@@ -1,0 +1,194 @@
+<style>
+    pre.example {
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        background: #eee;
+        margin-left: 20px;
+        padding: 5px;
+        overflow: auto;
+    }
+
+    p.indent {
+        margin-left: 20px;
+    }
+</style>
+
+<p>
+    <a href="http://www.checkio.org/mission/find-friends/share/3061fec1b35588e4bae8ad69db073aab/">
+        "How to find friends"
+    </a> のミッションでは、特別に作られたデータ構造にアクセスすることはすばらしいです。
+    このミッションでは友人ネットワークを格納し扱うためのデータ構造を体得するでしょう。
+
+</p>
+<!-- <p>
+    For the mission
+    <a href="http://www.checkio.org/mission/find-friends/share/3061fec1b35588e4bae8ad69db073aab/">
+        "How to find friends"
+    </a>, it’s nice to have access to a specially made data structure. In this mission we will
+    realize a data structure which we will use to store and work with a friend network.
+
+</p> -->
+
+<p>
+  "Friends"クラスは名前とそれらの関係を含む必要があります。
+  名前は大文字小文字を区別する文字列として表現されます。
+  関係には方向付けがなく、"sophia"が "nikola" と関係していたらその時は逆もまた正しいです。
+
+</p>
+<!-- <p>
+    The class "Friends" should contains names and the connections between them. Names are
+    represented as strings and are case sensitive. Connections are undirected, so if "sophia" is
+    connected with "nikola", then it's also correct in reverse.
+
+</p> -->
+
+<p>
+    <em>class</em> <strong>Friends</strong><em>(connections)</em>
+</p>
+<p class="indent">
+  新しいFriendsのインスタンスを返します。
+  <em>"connections"</em> はそれぞれ2つの要素を持つ反復可能(iterable)な集合(set)です。
+  それぞれのconnection は2つの名前の文字列を含みます。
+  connection は最初のデータでは繰り返すことが出来ますが、一度しか格納されません。
+  それぞれのconnection は2つの状態しかありません -- 存在するかしないか。
+
+</p>
+<!-- <p class="indent">
+    Returns a new Friends instance. <em>"connections"</em> is an iterable of sets with two elements
+    in each. Each connection contains two names as strings. Connections can be repeated in the
+    initial data, but inside it's stored once. Each connection has only two states - existing or not.
+
+</p> -->
+
+<pre class="example">
+>>> Friends(({"a", "b"}, {"b", "c"}, {"c", "a"}, {"a", "c"}))
+>>> Friends([{"1", "2"}, {"3", "1"}])
+</pre>
+<br>
+
+<p>
+    <strong>add</strong>(connection)
+</p>
+<p class="indent">
+  インスタンスにconnection を追加します。
+    <em>"connection"</em> は2つの名前(文字列)の集合です。
+    このconnectionが新しかったらTrueを返します。
+    このconnectionが既に存在していたらFalseを返します。
+</p>
+<!-- <p class="indent">
+    Add a connection in the instance. <em>"connection"</em>
+    is a set of two names (strings).
+    Returns True if this connection is new.
+    Returns False if this connection exists already.
+</p> -->
+<pre class="example">
+>>> f = Friends([{"1", "2"}, {"3", "1"}])
+>>> f.add({"1", "3"})
+False
+>>> f.add({"4", "5"})
+True
+</pre>
+<br>
+
+<p>
+    <strong>remove</strong>(connection)
+</p>
+<p class="indent">
+  インスタンスからconnection を削除します。
+  <em>"connection"</em> は2つの名前(文字列)の集合です。
+  connection が存在していたらTrueを返します。
+  インスタンスに connection が存在していなかったらFalseを返します。
+</p>
+<!-- <p class="indent">
+    Remove a connection from the instance. <em>"connection"</em>
+    is a set of two names (strings).
+    Returns True if this connection exists.
+    Returns False if this connection is not in the instance.
+</p> -->
+<pre class="example">
+>>> f = Friends([{"1", "2"}, {"3", "1"}])
+>>> f.remove({"1", "3"})
+True
+>>> f.remove({"4", "5"})
+False
+</pre>
+<br>
+<p>
+    <strong>names</strong>()
+</p>
+<p class="indent">
+  名前の集合(set)を返します。この集合は誰かと関係のある名前だけを含みます。
+</p>
+<!-- <p class="indent">
+    Returns a set of names. The set contains only names which are connected with somebody.
+</p> -->
+<pre class="example">
+>>> f = Friends(({"a", "b"}, {"b", "c"}, {"c", "d"}))
+>>> f.names()
+{"a", "b", "c", "d"}
+>>> f.remove({"d", "c"})
+True
+>>> f.names()
+{"a", "b", "c"}
+</pre>
+<br>
+<p>
+    <strong>connected</strong>(name)
+</p>
+<p class="indent">
+    与えられた<em>"name"</em> と関係する名前の集合を返します。
+    もしインスタンスに"name" が存在しなかったら空の集合を返します。
+</p>
+<!-- <p class="indent">
+    Returns a set of names which is connected with the given <em>"name"</em>.
+    If "name" does not exist in the instance, then return an empty set.
+</p> -->
+<pre class="example">
+>>> f = Friends(({"a", "b"}, {"b", "c"}, {"c", "a"}))
+>>> f.connected("a")
+{"b", "c"}
+>>> f.connected("d")
+set()
+>>> f.remove({"c", "a"})
+True
+>>> f.connected("c")
+{"b"}
+>>> f.remove({"c", "b"})
+True
+>>> f.connected("c")
+set()
+</pre>
+<br>
+<p>
+  このミッションではすべてのデータは正しいので、値のチェックを実装する必要はありません。
+</p>
+<!-- <p>
+    In this mission all data will be correct and you don't need to implement value checking.
+</p> -->
+
+<p>
+    <strong>入力 </strong> Friendsクラスのステートメントと式
+</p>
+
+<p>
+    <strong>出力 </strong> 前述したふるまい
+</p>
+
+
+<p class="for_info_only">
+    <strong>どうやって使われるか</strong>
+    ここでは状態が変更可能なクラスを実装します。
+    これはいくつかの関数を持ち単純ではない構造で、オブジェクトの表現はより複雑になってます。
+
+</p>
+<!-- <p class="for_info_only">
+    <strong>How it is used: </strong>
+    Here you will implement a class with mutable states. This is not a simple structure with a
+    couple of functions, but object representation with more complex structure.
+
+</p> -->
+
+<p>
+    <strong>事前条件</strong>
+    すべてのデータは正しい
+</p>
