@@ -1,0 +1,150 @@
+<style>
+    pre.example {
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        background: #eee;
+        margin-left: 20px;
+        padding: 5px;
+        overflow: auto;
+    }
+
+    p.indent {
+        margin-left: 20px;
+    }
+</style>
+
+<p>
+    Pour cette mission
+    <a href="http://www.checkio.org/mission/find-friends/share/3061fec1b35588e4bae8ad69db073aab/">
+        "How to find friends"
+    </a>, c'est pratique d'avoir accès à une structure spécialement crée pour cela. Dans cette mission
+    nous réaliserons une structure de données que nous utiliserons pour stocker et travailler avec un 
+    réseau d'amis.
+
+</p>
+
+<p>
+    La classe "Friends" contiendra des noms et les relations entre eux. Les noms sont  
+    représentés par des chaines de caractères prenant en compte les majuscules. Les relations
+    sont réciproques, c'est à dire que si "sophia" est liée à "nikola", l'inverse est également
+    valide.
+
+</p>
+
+<p>
+    <em>class</em> <strong>Friends</strong><em>(relations)</em>
+</p>
+<p class="indent">
+    Résulte en une nouvelle instance de "Friends". <em>"relations"</em> est un "sets" itérable 
+    comprenant deux éléments dans chaque itération. Chaque relation contient deux noms sous la 
+    forme de chaine de caractères. Les relations peuvent être répétées dans les données initiales,
+    mais ne sont stockées qu'une seule fois. chaque relation a seulement deux valeurs - existante ou pas.
+
+</p>
+
+<pre class="exemple">
+>>> Friends(({"a", "b"}, {"b", "c"}, {"c", "a"}, {"a", "c"}))
+>>> Friends([{"1", "2"}, {"3", "1"}])
+</pre>
+<br>
+
+<p>
+    <strong>add</strong>(relation)
+</p>
+<p class="indent">
+    Ajoute une relation dans une instance. <em>"relation"</em>
+    est un "set" de deux noms (chaine de caractères).
+    Résulte en "True" si la relation est nouvelle.
+    Résulte en "False" si cette relation existe déjà.
+</p>
+<pre class="exemple">
+>>> f = Friends([{"1", "2"}, {"3", "1"}])
+>>> f.add({"1", "3"})
+False
+>>> f.add({"4", "5"})
+True
+</pre>
+<br>
+
+<p>
+    <strong>remove</strong>(relation)
+</p>
+<p class="indent">
+    supprime une relation de l'instance. <em>"relation"</em>
+    est un "sets" de deux noms (chaine de caractères).
+    Résulte en "True" si la relation existe.
+    Résulte en "False" si la relation n'existe pas dans l'instance.
+</p>
+<pre class="exemple">
+>>> f = Friends([{"1", "2"}, {"3", "1"}])
+>>> f.remove({"1", "3"})
+True
+>>> f.remove({"4", "5"})
+False
+</pre>
+<br>
+<p>
+    <strong>names</strong>()
+</p>
+<p class="indent">
+    Résulte en un "sets" de noms. Le "set" contient seulement les noms reliés avec quelqu'un.
+</p>
+<pre class="exemple">
+>>> f = Friends(({"a", "b"}, {"b", "c"}, {"c", "d"}))
+>>> f.names()
+{"a", "b", "c", "d"}
+>>> f.remove({"d", "c"})
+True
+>>> f.names()
+{"a", "b", "c"}
+</pre>
+<br>
+<p>
+    <strong>connected</strong>(name)
+</p>
+<p class="indent">
+    Résulte en un "set" de noms qui sont liés avec le nom en paramètre <em>"name"</em>.
+    Si "name" n'existe pas dans l'instance, la fonction résulte en un "set" vide.
+</p>
+<pre class="exemple">
+>>> f = Friends(({"a", "b"}, {"b", "c"}, {"c", "a"}))
+>>> f.connected("a")
+{"b", "c"}
+>>> f.connected("d")
+set()
+>>> f.remove({"c", "a"})
+True
+>>> f.connected("c")
+{"b"}
+>>> f.remove({"c", "b"})
+True
+>>> f.connected("c")
+set()
+</pre>
+<br>
+<p>
+    Dans cette mission toutes les données sont correctes, par conséquent vous n'avez pas besoin d'implémenter 
+    des contrôles.
+</p>
+
+<p>
+    <strong>Entrée: </strong> états et expression de la classe "Friends".
+</p>
+
+<p>
+    <strong>Résultats: </strong> Le fonctionnement tel que décris.
+</p>
+
+
+<p class="for_info_only">
+    <strong>Utilisation: </strong>
+    Ici vous implémentez une classe avec des changements. Ce n'est pas une structure simple avec quelques fonctions,
+    mais une réprésentation d'objets avec une structure complexe.
+
+</p>
+
+<p>
+    <strong>Precondition:</strong>
+    Toutes les données sont correctes.
+</p>
+
