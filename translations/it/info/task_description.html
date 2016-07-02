@@ -1,0 +1,146 @@
+<style>
+    pre.example {
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        background: #eee;
+        margin-left: 20px;
+        padding: 5px;
+        overflow: auto;
+    }
+
+    p.indent {
+        margin-left: 20px;
+    }
+</style>
+
+<p>
+    Per la missione
+    <a href="http://www.checkio.org/mission/find-friends/share/3061fec1b35588e4bae8ad69db073aab/">
+        "How to find friends"
+    </a>, &egrave; carino avere accesso ad una struttura di dati progettata appositamente.
+    In questa missione realizzeremo una struttura di dati che useremo per memorizzare
+    e manipolare una rete di amicizie.
+</p>
+
+<p>
+    La classe "Friends" deve contenere nomi e connessioni tra di essi.
+    I nomi sono rappresentati da stringhe e sono case-sensitive (tengono conto della differenza
+    tra lettere maiuscole e minuscole). Le connessioni non hanno direzione, dunque se "sophia"
+    &egrave; connessa con "nikole" allora &egrave; vero anche il viceversa.
+</p>
+
+<p>
+    <em>class</em> <strong>Friends</strong><em>(connections)</em>
+</p>
+<p class="indent">
+    Restituisce un'istanza di Friends. <em>"connections"</em> &egrave; un iterabile di insiemi con due elementi
+    ciascuno. Ogni connessione contiene due nomi come stringhe. Le connessioni possono essere ripetute nei
+    dati iniziali, ma internamente sono memorizzate senza ripetizioni.
+    Ogni connessione ha due soli stati possibili - esistente o inesistente.
+</p>
+
+<pre class="example">
+>>> Friends(({"a", "b"}, {"b", "c"}, {"c", "a"}, {"a", "c"}))
+>>> Friends([{"1", "2"}, {"3", "1"}])
+</pre>
+<br>
+
+<p>
+    <strong>add</strong>(connection)
+</p>
+<p class="indent">
+    Aggiunge una connessione all'istanza.
+    <em>"connection"</em> &egrave; un insieme di due nomi (stringhe).
+    Restituisce True se la connessione &egrave; nuova.
+    Restituisce Falso se la connessione esiste gi&agrave;.
+</p>
+<pre class="example">
+>>> f = Friends([{"1", "2"}, {"3", "1"}])
+>>> f.add({"1", "3"})
+False
+>>> f.add({"4", "5"})
+True
+</pre>
+<br>
+
+<p>
+    <strong>remove</strong>(connection)
+</p>
+<p class="indent">
+    Rimuove una connessione dall'istanza.
+    <em>"connection"</em> &egrave; un insieme di due nomi (stringhe).
+    Restituisce True se la connessione esiste.
+    Restituisce False se la connessione non &egrave; nell'istanza.
+</p>
+<pre class="example">
+>>> f = Friends([{"1", "2"}, {"3", "1"}])
+>>> f.remove({"1", "3"})
+True
+>>> f.remove({"4", "5"})
+False
+</pre>
+<br>
+<p>
+    <strong>names</strong>()
+</p>
+<p class="indent">
+    Restituisce un insieme di nomi.
+    L'insieme contiene solo i nomi di chi &egrave; connesso con qualcuno.
+</p>
+<pre class="example">
+>>> f = Friends(({"a", "b"}, {"b", "c"}, {"c", "d"}))
+>>> f.names()
+{"a", "b", "c", "d"}
+>>> f.remove({"d", "c"})
+True
+>>> f.names()
+{"a", "b", "c"}
+</pre>
+<br>
+<p>
+    <strong>connected</strong>(name)
+</p>
+<p class="indent">
+    Restituisce l'insieme dei nomi connessi con quello dato <em>"name"</em>.
+    Se "name" non esiste nell'istanza allora restituisce un insieme vuoto.
+</p>
+<pre class="example">
+>>> f = Friends(({"a", "b"}, {"b", "c"}, {"c", "a"}))
+>>> f.connected("a")
+{"b", "c"}
+>>> f.connected("d")
+set()
+>>> f.remove({"c", "a"})
+True
+>>> f.connected("c")
+{"b"}
+>>> f.remove({"c", "b"})
+True
+>>> f.connected("c")
+set()
+</pre>
+<br>
+<p>
+    In questa missione tutti i dati saranno corretti e non dovrai implementare alcun controllo.
+</p>
+
+<p>
+    <strong>Input: </strong> Dichiarazioni ed espressioni contenenti la classe Friends.
+</p>
+
+<p>
+    <strong>Output: </strong> Il comportamento descritto.
+</p>
+
+
+<p class="for_info_only">
+    <strong>Come si usa: </strong>
+    Implementerai una classe con stati mutevoli.
+    Questa non &egrave; una semplice struttura con alcune funzioni, ma la reppresentazione
+    di un oggetto con una struttura pi&ugrave; complessa.
+</p>
+
+<p>
+    <strong>Prerequisiti:</strong>
+    Tutti i dati sono validi.
+</p>
