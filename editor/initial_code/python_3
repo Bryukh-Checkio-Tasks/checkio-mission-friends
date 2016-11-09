@@ -26,6 +26,7 @@ if __name__ == '__main__':
     assert digit_friends.remove({"1", "3"}) is True, "Remove opposite connection"
     assert letter_friends.remove({"c", "d"}) is True, "Remove"
     assert digit_friends.remove({"c", "d"}) is False, "Remove non exists"
-    assert letter_friends.names() == {"a", "b", "c"}, "Names"
+    assert letter_friends.names() == {"a", "b", "c"}, "Letter Friends Names"
+    assert digit_friends.names() == {"2", "1"}, "Digit Friends Names"
     assert letter_friends.connected("d") == set(), "Non connected name"
     assert letter_friends.connected("a") == {"b", "c"}, "Connected name"
