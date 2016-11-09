@@ -30,6 +30,3 @@ if __name__ == '__main__':
     assert digit_friends.names() == {"2", "1"}, "Digit Friends Names"
     assert letter_friends.connected("d") == set(), "Non connected name"
     assert letter_friends.connected("a") == {"b", "c"}, "Connected name"
-    
-    assert letter_friends.add({"c", "d"}) is True, "Add"
-    assert letter_friends.add({"c", "d"}) is False, "Add again"
